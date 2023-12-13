@@ -1,0 +1,38 @@
+pipeline:
+  name: Build gh
+  identifier: Build_gh
+  projectIdentifier: Onboarding
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github
+        repoName: gh
+        build: <+input>
+  stages:
+    - stage:
+        name: Build and Release
+        identifier: Build_and_Release
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: Build And Push
+                  identifier: Build_And_Push
+                  spec:
+                    connectorRef: account.Dockerhub
+                    repo: mansong/gh
+                    tags:
+                      - latest
+                    caching: true
