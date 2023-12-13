@@ -10,7 +10,7 @@ RUN microdnf update --nodocs --setopt=install_weak_deps=0 \
     && microdnf install gh --nodocs \
     && microdnf remove yum-utils \
     && microdnf clean all \
-    && rm -rf /var/cache/yum
+    && rm -rf /var/cache/yum /var/cache/dnf
 
 ENTRYPOINT ["gh"]
 CMD [ "--help" ]
