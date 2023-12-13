@@ -27,6 +27,15 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Run
+                  name: Set Tag
+                  identifier: Set_Tag
+                  spec:
+                    shell: Sh
+                    command: CLI_VERSION=$(curl https://api.github.com/repos/cli/cli/releases/latest -s | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+                    outputVariables:
+                      - name: CLI_VERSION
+              - step:
                   type: BuildAndPushDockerRegistry
                   name: Build And Push
                   identifier: Build_And_Push
