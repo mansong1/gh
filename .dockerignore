@@ -1,0 +1,5 @@
+# Ignore everything
+**
+
+# Allow files and directories needed for the Docker build
+!Dockerfile
