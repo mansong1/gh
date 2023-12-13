@@ -44,4 +44,5 @@ pipeline:
                     repo: mansong/gh
                     tags:
                       - latest
+                      - <+execution.steps.Set_Tag.output.outputVariables.CLI_VERSION>
                     caching: true
