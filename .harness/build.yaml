@@ -46,3 +46,8 @@ pipeline:
                       - latest
                       - <+execution.steps.Set_Tag.output.outputVariables.CLI_VERSION>
                     caching: true
+          caching:
+            enabled: false
+            paths: []
+          slsa_provenance:
+            enabled: false
