@@ -1,5 +1,6 @@
 inputSet:
   name: cron
+  tags: {}
   identifier: cron
   orgIdentifier: default
   projectIdentifier: Onboarding
@@ -11,5 +12,4 @@ inputSet:
           build:
             type: branch
             spec:
-              branch: <+trigger.branch>
-  object Object: pipeline.properties.ci.codebase
+              branch: main
