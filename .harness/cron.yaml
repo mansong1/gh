@@ -1,0 +1,15 @@
+inputSet:
+  name: cron
+  identifier: cron
+  orgIdentifier: default
+  projectIdentifier: Onboarding
+  pipeline:
+    identifier: Build_gh
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
+  object Object: pipeline.properties.ci.codebase
