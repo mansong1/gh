@@ -31,10 +31,14 @@ pipeline:
                   name: Set Tag
                   identifier: Set_Tag
                   spec:
+                    connectorRef: org.Dockerhub
+                    image: bash:123
                     shell: Sh
                     command: CLI_VERSION=$(curl https://api.github.com/repos/cli/cli/releases/latest -s | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
                     outputVariables:
                       - name: CLI_VERSION
+                        type: String
+                        value: CLI_VERSION
               - step:
                   type: BuildAndPushDockerRegistry
                   name: Build And Push
